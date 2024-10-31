@@ -1,39 +1,71 @@
 export interface UserHttp { //donnée qui arrive du back
-  id: number,
-  lastname: string,
-  firstname: string,
-  username: string,
+  idUser: number,
   email: string,
+  firstname: string,
+  lastname: string,
+  nickname: string,
   password: string,
-  confirmPassword: string,
-  // country: string,
-  roles: { id: number, roleName: string } [],
-  commands: { id: number, "remarque": "string", "payment": true } []
+  // confirmPassword: string,
+  streetNumber: string,
+  streetName: string,
+  zipcode: string,
+  city: string,
+  country: string,
+  roleList: { id: number, roleName: string } [],
+  commandList: { id: number, "payment": boolean, "remarques": string } []
 }
 
 export interface User { // donnée qu'on transmet
-  id: number,
-  lastname: string,
-  firstname: string,
-  username: string,
+  idUser: number,
   email: string,
+  firstname: string,
+  lastname: string,
+  nickname: string,
+  password: string,
+  // confirmPassword: string,
+  streetNumber: string,
+  streetName: string,
+  zipcode: string,
+  city: string,
+  country: string,
+  roleList: { id: number, roleName: string } [],
+  commandList: { id: number, "payment": boolean, "remarques": string } []
   fullname: string,
-  // country: User.Country,
-  roles: { id: number, roleName: string } [],
-  // commands: { "id": 0, "remarque": "string", "payment": true} []
 }
 
 export interface UserForm {
   // country: User.Country
   lastname: string,
   firstname: string,
-  username: string,
+  nickname: string,
   email: string,
   password: string,
-  roles: { id: number }[]
+  confirmPassword?: string,
+  // roleList: { id: number, roleName: string }[]
 }
 
 export namespace User {
+
+  export function mapperUserHttpToUser(userHttp: UserHttp): User {
+    return {
+      idUser: userHttp.idUser,
+      email: userHttp.email,
+      firstname: userHttp.firstname,
+      lastname: userHttp.lastname,
+      nickname: userHttp.nickname,
+      password: userHttp.password,
+      // confirmPassword: userHttp.confirmPassword,
+      streetNumber: userHttp.streetNumber,
+      streetName: userHttp.streetName,
+      zipcode: userHttp.zipcode,
+      city: userHttp.city,
+      country: userHttp.country,
+      roleList: userHttp.roleList,
+      commandList: userHttp.commandList,
+      fullname: `${userHttp.firstname} ${userHttp.lastname}`,
+    }
+  }
+
 
   // export enum Country {
   //   USA = "United States of America",
@@ -241,18 +273,6 @@ export namespace User {
   // }
 
 
-  export function mapperUserHttpToUser(userHttp: UserHttp): User {
-    return {
-      id: userHttp.id,
-      email: userHttp.email,
-      firstname: userHttp.firstname,
-      lastname: userHttp.lastname,
-      username: userHttp.username,
-      // country: userHttp.country as Country,
-      fullname: `${userHttp.firstname} ${userHttp.lastname}`,
-      roles: userHttp.roles,
 
-    }
-  }
 }
 

@@ -27,12 +27,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let user of users$ | async">
-      <th scope="row">{{user.id}}</th>
+      <th scope="row">{{user.idUser}}</th>
       <td>{{user.email}}</td>
       <td>{{user.fullname}}</td>
       <td>
         <!--  C'est la route dans l'application front. Le routeur link concatène le /users avec l'id de l'utilisateur-->
-        <a [routerLink]="['/', 'users', user.id]"
+        <a [routerLink]="['/', 'users', user.idUser]"
            class="btn btn-outline-primary text-uppercase mx-2">
           DÉTAILS
         </a>

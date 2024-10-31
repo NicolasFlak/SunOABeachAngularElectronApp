@@ -22,75 +22,38 @@ export class UserService {
   }
 
   getAll(): Promise<User[]> {
-    // const token = this.authService.token as string
-    //
-    // const headers = new HttpHeaders( {
-    //   'Authorization': `Bearer ${token}`
-    // })
-    //
-    // const options = { headers }
-
     const obsHttp$ = this.http
       .get<UserHttp[]>(`${this.fullBaseUrlApi}/`) //, options
       .pipe( // transforme les données Java en données front
         map((usersHttp: UserHttp[]) => usersHttp.map((userHttp: UserHttp) => User.mapperUserHttpToUser(userHttp)))
       )
-
     return firstValueFrom(obsHttp$) // toPromise
   }
 
   getById(id: number): Promise<User> {
-    // const token = this.authService.token as string
-    //
-    // const headers = new HttpHeaders( {
-    //   'Authorization': `Bearer ${token}`
-    // })
-    //
-    // const options = { headers }
-
     const obsHttp$ = this.http
       .get<UserHttp>(`${this.fullBaseUrlApi}/${id}`) // c'est un flux //, options
-      .pipe( // transforme les données Java en données front // c'est un observable, mais comme il faut subscribe et unsubscribe, on préfère le transformer en promise juste en-dessous avec firstValueFrom()
+      .pipe( // transforme les données Java en données front // c'est un observable, mais comme il faut subscribe et unsubscribe, on préfère le transformer en promise juste en-dessous avec firstValueFrom() // Dans votre code, vous utilisez firstValueFrom(obsHttp$) pour transformer l'Observable en Promise. Cela vous permet de traiter le résultat d'une opération asynchrone (dans ce cas, une requête HTTP) sans avoir à gérer les abonnements et désabonnements manuellement.
         map((userHttp: UserHttp) => User.mapperUserHttpToUser(userHttp))
       )
-
     return firstValueFrom(obsHttp$) // toPromise: on transforme l'observable en promesse
   }
 
   add(userToAdd: UserForm): Promise<any> {
-    // const token = this.authService.token as string
-    // const headers = new HttpHeaders( {'Authorization': `Bearer ${token}`})
-    // const options = { headers }
-
     const obsHttp$ = this.http
       .post(`${this.fullBaseUrlApi}/`, userToAdd) //, options
-
     return firstValueFrom(obsHttp$) // toPromise
   }
 
   edit(id: number, userEdited: UserForm): Promise<any> {
-    // const token = this.authService.token as string
-    // const headers = new HttpHeaders( {'Authorization': `Bearer ${token}`})
-    // const options = { headers }
-
     const obsHttp$ = this.http
       .put(`${this.fullBaseUrlApi}/${id}`, userEdited) //, options
-
     return firstValueFrom(obsHttp$) // toPromise
   }
 
   deleteById(id: number): Promise<any> {
-    // const token = this.authService.token as string
-    //
-    // const headers = new HttpHeaders( {
-    //   'Authorization': `Bearer ${token}`
-    // })
-    //
-    // const options = { headers }
-
     const obsHttp$ = this.http
       .delete(`${this.fullBaseUrlApi}/${id}`)
-
     return firstValueFrom(obsHttp$) // toPromise
   }
 

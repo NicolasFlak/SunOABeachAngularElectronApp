@@ -55,14 +55,16 @@ export class ListComponent implements OnInit {
           // lastname: this.userForm?.value.lastname,
           // password: this.userForm?.value.password,
           // country: 'France',
-          // roles: [{ id: 1}]
+          // roles: [{ id: 2}]
           // }
           // OU
 
           // Technique 2 avec destructuration
           ...this.userForm?.value, // on prend les values du userForm et on récupère les values correspondantes du user. Les clés du userForm doivent avoir le même nom que les attributs du User
-          username: 'monUsername',
-          roles: [ {id: 1} ]
+          nickname: 'monNickname',
+          confirmPassword: 'Password123!',
+          country: 'France',
+          // roleList: [ {id: 2, roleName : 'USER'}]
         }
         console.log(userForm)
 
@@ -87,14 +89,15 @@ export class ListComponent implements OnInit {
 
         const userForm: UserForm = {
           ...this.userForm?.value,
-          username: 'monUsername',
-          roles: [ {id: 1} ],
-          commands: [ ]
+          nickname: 'monNickname',
+          // roleList: [ {id: 2} ],
+          country: 'France',
+          commandList: [ ]
         }
         console.log(userForm)
 
         this.userService
-          .edit(userToEdit.id, userForm)
+          .edit(userToEdit.idUser, userForm)
           .then( () => {
             // this.users$ = this.userService.getAll()
             this.users$ = this.getUsersFiltered()
@@ -124,7 +127,7 @@ export class ListComponent implements OnInit {
     modal.result
       .then(() => {
         this.userService
-          .deleteById(user.id)
+          .deleteById(user.idUser)
           .then(() => {
             // this.users$ = this.userService.getAll()
             this.users$ = this.getUsersFiltered()
@@ -167,7 +170,5 @@ export class ListComponent implements OnInit {
         })
       )
   }
-
-
 
 }
