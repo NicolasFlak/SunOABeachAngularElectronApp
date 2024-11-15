@@ -157,6 +157,7 @@ export class ListComponent implements OnInit {
        city: [ userToEdit ? userToEdit.city : undefined],
        country: [ userToEdit ? userToEdit.country : undefined, [Validators.required] ],
        password: [ userToEdit ? userToEdit.password : undefined, [Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':",.<>\/?]).{8,}$/) ] ], // Si on veut rajouter un pattern pour le mot de passe (1 lettre, 1 majuscule, 1 chiffre et 1 caractère spécial minimum) : rajouter Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':",.<>\/?]).{8,}$/)
+       confirmPassword: [ userToEdit ? userToEdit.password : undefined, [Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':",.<>\/?]).{8,}$/) ] ]
        // country: [userToEdit ? userToEdit.country : Country.FRANCE, [Validators.required] ]
      } )
   }

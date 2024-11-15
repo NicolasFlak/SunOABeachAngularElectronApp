@@ -82,25 +82,25 @@
 
       <div class="form-floating mt-2">
         <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" formControlName="email" required email>
-        <label for="floatingEmail">Email address</label>
+        <label for="floatingEmail">Email address *</label>
         <app-form-errors [group]="userForm" controlName="email" controlLabel="Email"></app-form-errors>
       </div>
 
       <div class="form-floating mt-2">
-        <input type="text" class="form-control" id="floatingFirstname" placeholder="Firstname" formControlName="firstname" required>
+        <input type="text" class="form-control" id="floatingFirstname" placeholder="Firstname" formControlName="firstname">
         <label for="floatingFirstname">Firstname</label>
         <app-form-errors [group]="userForm" controlName="firstname" controlLabel="Firstname"></app-form-errors>
       </div>
 
       <div class="form-floating mt-2">
-        <input type="text" class="form-control" id="floatingLastname" placeholder="Lastname" formControlName="lastname" required>
+        <input type="text" class="form-control" id="floatingLastname" placeholder="Lastname" formControlName="lastname">
         <label for="floatingLastname">Lastname</label>
         <app-form-errors [group]="userForm" controlName="lastname" controlLabel="Lastname"></app-form-errors>
       </div>
 
       <div class="form-floating mt-2">
-        <input type="text" class="form-control" id="floatingNickname" placeholder="Pseudo" formControlName="nickname">
-        <label for="floatingNickname">Pseudo</label>
+        <input type="text" class="form-control" id="floatingNickname" placeholder="Pseudo" formControlName="nickname" required>
+        <label for="floatingNickname">Pseudo *</label>
         <app-form-errors [group]="userForm" controlName="nickname" controlLabel="Nickname"></app-form-errors>
       </div>
 
@@ -129,15 +129,21 @@
       </div>
 
       <div class="form-floating mt-2">
-        <input type="text" class="form-control" id="floatingCountry" placeholder="Pays" formControlName="country">
-        <label for="floatingCountry">Pays</label>
+        <input type="text" class="form-control" id="floatingCountry" placeholder="Pays" formControlName="country" required>
+        <label for="floatingCountry">Pays *</label>
         <app-form-errors [group]="userForm" controlName="country" controlLabel="Country"></app-form-errors>
       </div>
 
       <div class="form-floating mt-2">
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
-        <label for="floatingPassword">Password</label>
+        <label for="floatingPassword">Password *</label>
         <app-form-errors [group]="userForm" controlName="password" controlLabel="Password"></app-form-errors>
+      </div>
+
+      <div class="form-floating mt-2">
+        <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Confirmation du mot de passe" formControlName="confirmPassword">
+        <label for="floatingConfirmPassword">Confirmation du Mot de Passe *</label>
+        <app-form-errors [group]="userForm" controlName="confirmPassword" controlLabel="ConfirmPassword"></app-form-errors>
       </div>
 
 <!--      <div class="form-floating mt-2">-->
