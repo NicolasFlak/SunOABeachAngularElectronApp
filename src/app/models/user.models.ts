@@ -41,6 +41,11 @@ export interface UserForm {
   email: string,
   password: string,
   confirmPassword?: string,
+  streetNumber: string,
+  streetName: string,
+  zipcode: string,
+  city: string,
+  country: string
   // roleList: { id: number, roleName: string }[]
 }
 

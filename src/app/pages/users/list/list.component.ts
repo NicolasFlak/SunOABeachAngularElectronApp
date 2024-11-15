@@ -61,9 +61,9 @@ export class ListComponent implements OnInit {
 
           // Technique 2 avec destructuration
           ...this.userForm?.value, // on prend les values du userForm et on récupère les values correspondantes du user. Les clés du userForm doivent avoir le même nom que les attributs du User
-          nickname: 'monNickname',
-          confirmPassword: 'Password123!',
-          country: 'France',
+          // nickname: 'monNickname',
+          // confirmPassword: 'Password123!',
+          // country: 'France',
           // roleList: [ {id: 2, roleName : 'USER'}]
         }
         console.log(userForm)
@@ -89,9 +89,9 @@ export class ListComponent implements OnInit {
 
         const userForm: UserForm = {
           ...this.userForm?.value,
-          nickname: 'monNickname',
+          // nickname: 'monNickname',
           // roleList: [ {id: 2} ],
-          country: 'France',
+          // country: 'France',
           commandList: [ ]
         }
         console.log(userForm)
@@ -148,9 +148,15 @@ export class ListComponent implements OnInit {
     // chaque variable(email, firstname, etc...) est reliée à un formControlName dans le html
      this.userForm = this.fb.group( {
        email: [ userToEdit ? userToEdit.email : undefined, [Validators.required, Validators.email, Validators.minLength(6)] ],
-       firstname: [ userToEdit ? userToEdit.firstname : undefined, [Validators.required] ],
-       lastname: [ userToEdit ? userToEdit.lastname : undefined, [Validators.required] ],
-       password: [ undefined, [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':",.<>\/?]).{8,}$/) ] ], // Si on veut rajouter un pattern pour le mot de passe (1 lettre, 1 majuscule, 1 chiffre et 1 caractère spécial minimum) : rajouter Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':",.<>\/?]).{8,}$/)
+       firstname: [ userToEdit ? userToEdit.firstname : undefined],
+       lastname: [ userToEdit ? userToEdit.lastname : undefined],
+       nickname: [ userToEdit ? userToEdit.nickname : undefined, [Validators.required] ],
+       streetNumber: [ userToEdit ? userToEdit.streetNumber : undefined],
+       streetName: [ userToEdit ? userToEdit.streetName : undefined],
+       zipcode: [ userToEdit ? userToEdit.zipcode : undefined],
+       city: [ userToEdit ? userToEdit.city : undefined],
+       country: [ userToEdit ? userToEdit.country : undefined, [Validators.required] ],
+       password: [ userToEdit ? userToEdit.password : undefined, [Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':",.<>\/?]).{8,}$/) ] ], // Si on veut rajouter un pattern pour le mot de passe (1 lettre, 1 majuscule, 1 chiffre et 1 caractère spécial minimum) : rajouter Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':",.<>\/?]).{8,}$/)
        // country: [userToEdit ? userToEdit.country : Country.FRANCE, [Validators.required] ]
      } )
   }

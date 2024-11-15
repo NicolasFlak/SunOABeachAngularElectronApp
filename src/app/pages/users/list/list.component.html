@@ -99,7 +99,43 @@
       </div>
 
       <div class="form-floating mt-2">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" required>
+        <input type="text" class="form-control" id="floatingNickname" placeholder="Pseudo" formControlName="nickname">
+        <label for="floatingNickname">Pseudo</label>
+        <app-form-errors [group]="userForm" controlName="nickname" controlLabel="Nickname"></app-form-errors>
+      </div>
+
+      <div class="form-floating mt-2">
+        <input type="number" class="form-control" id="floatingStreetNumber" placeholder="Numéro" formControlName="streetNumber">
+        <label for="floatingStreetNumber">Numéro</label>
+        <app-form-errors [group]="userForm" controlName="streetNumber" controlLabel="StreetNumber"></app-form-errors>
+      </div>
+
+      <div class="form-floating mt-2">
+        <input type="text" class="form-control" id="floatingStreetName" placeholder="Rue" formControlName="streetName">
+        <label for="floatingStreetName">Rue</label>
+        <app-form-errors [group]="userForm" controlName="streetName" controlLabel="StreetName"></app-form-errors>
+      </div>
+
+      <div class="form-floating mt-2">
+        <input type="text" class="form-control" id="floatingZipcode" placeholder="Code Postal" formControlName="zipcode">
+        <label for="floatingZipcode">Code Postal</label>
+        <app-form-errors [group]="userForm" controlName="zipcode" controlLabel="Zipcode"></app-form-errors>
+      </div>
+
+      <div class="form-floating mt-2">
+        <input type="text" class="form-control" id="floatingCity" placeholder="Ville" formControlName="city">
+        <label for="floatingCity">Ville</label>
+        <app-form-errors [group]="userForm" controlName="city" controlLabel="City"></app-form-errors>
+      </div>
+
+      <div class="form-floating mt-2">
+        <input type="text" class="form-control" id="floatingCountry" placeholder="Pays" formControlName="country">
+        <label for="floatingCountry">Pays</label>
+        <app-form-errors [group]="userForm" controlName="country" controlLabel="Country"></app-form-errors>
+      </div>
+
+      <div class="form-floating mt-2">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
         <label for="floatingPassword">Password</label>
         <app-form-errors [group]="userForm" controlName="password" controlLabel="Password"></app-form-errors>
       </div>
